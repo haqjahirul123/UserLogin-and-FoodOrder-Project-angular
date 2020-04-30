@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="wrapper" *ngIf="newUser">
+    <div class="blanket">
+
+    </div>
+    <h1 #firstH1 *ngIf="!userNameSet" style="text-align: center;"  ><span class="flicker">Howdy, stranger.
+      Haven't seen your face around here before. What's your name?</span>  <span class="fast-flicker">Whats </span><span class="flicker">your name..</span></h1>
+      <!-- <h1 class="sign">jahiruljhbkjbkibkbkb</h1>
+      <div class="sign">
+        <span class="fast-flicker">b</span>rea<span class="flicker">t</span>he
+      </div> -->
+    <h1 *ngIf="userNameSet" style="text-align: center; color: white;" class="sign">Alright Rocker.
+      {{lastNameInput.value}}, WShat Drinks I can Offer You?</h1>
+    <div class="col-xs-12 col-md-8 col-md-offset-2" #inputBoxBtn>
+      <div class="form-group">
+
+        <label style="color:palevioletred;"> Enter your User Name</label>
+        <input
+          type="text"
+          class="form-control"
+
+          #nameInput>
+        <label style="color:palevioletred;">Enter Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          #lastNameInput>
+
+          <label style="color:palevioletred" class="control-label " for="pwd">Membership Number:</label>
+          <div class="col-sm-14">          
+            <input style="color:palevioletred" type="text" class="form-control" id="pwd" placeholder="Enter Membership Number" name="pwd">
+          </div>
+      </div>
+
+      <button class="btn btn-info btn-block" 
+      (click)="onSubmitName(nameInput.value,lastNameInput.value)">Submit</button>
+    </div>
+
+
+
+  </div>
+
+
+
+  <div class="wrapper2" *ngIf="!newUser" style="text-align: center;">
+    <h2 style="text-align: center;color: white;"> Hello again, Mr. {{userNoob}}
+      The usual? </h2>
+    <br>
+
+    <app-the-usual (usual)="getUsual($event)" (toggle)="getUsual($event)"></app-the-usual>
+    <h2 *ngIf="usualChoice" style="color: white;" class="sign">The {{usualBeverage}} is
+      on the way to you!</h2>
+  </div>
+  <app-select-beverage *ngIf="userNameSet || !newUser;" (bev)="getBev($event)"></app-select-beverage>
+  <!-- <ng-template #drinkRightUp><p> One ------, coming right up!</p></ng-template> -->
+  <div style="text-align: center;">
+    <h2 *ngIf="selected" style="color: white;" class="fast-flicker">Your {{beverage}}, coming right
+      up!</h2>
+  </div>
+  
+</div>
+<br>
+<br>
+<br>
+
+<button class="signBtn" (click)="del()">Delete Order</button> 
+
